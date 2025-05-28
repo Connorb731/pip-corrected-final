@@ -11,8 +11,19 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "public/assets"),
     },
   },
+  css: {
+    postcss: "./postcss.config.js",
+  },
   build: {
     outDir: "dist",
     emptyOutDir: true,
+    assetsDir: "assets",
+    rollupOptions: {
+      output: {
+        assetFileNames: "assets/[name].[hash][extname]",
+        chunkFileNames: "assets/[name].[hash].js",
+        entryFileNames: "assets/[name].[hash].js",
+      },
+    },
   },
 });
